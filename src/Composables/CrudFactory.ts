@@ -4,5 +4,4 @@ import type {Certificate} from "@/Types/Certificate.ts";
 
 export const crudFactory = {
     useCertificate: () => useCrud<Certificate>('certificates')
-
 }
