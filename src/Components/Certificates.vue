@@ -1,7 +1,8 @@
 ﻿<script setup lang="ts">
   import {crudFactory} from "@/Composables/CrudFactory.ts";
-  import {computed, onMounted, ref} from "vue";
+  import {computed, onMounted} from "vue";
   import Table from "@/Table.vue";
+  import router from "@/router";
 
   const certificate = crudFactory.useCertificate();
 
@@ -17,12 +18,17 @@
     await certificate.downloadFile(id);
   }
 
+  const toUploadCertificate = () => {
+    router.push("/certificate/upload");
+  }
+
   onMounted(async () => {
     await certificate.getAll()
   });
 </script>
 
 <template>
+  <button @click="toUploadCertificate">Upload Certificate</button>
   <Table :data="certificate.items" :headers="headers">
     <template #extraHeaders>
       <th></th>
