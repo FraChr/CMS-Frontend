@@ -29,11 +29,11 @@
     formData.append("issueDate", String(form.value.issueDate));
     formData.append("expiryDate", String(form.value.expiryDate));
 
-    if(form.value.file){
+    if(form.value.file) {
       formData.append("file", form.value.file);
     }
 
-    await certificate.upload(formData);
+    await certificate.uploadFile(formData);
     router.push('/')
   }
 
