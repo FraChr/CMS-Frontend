@@ -43,14 +43,14 @@ export function useCrud<T>(route: string) {
         window.URL.revokeObjectURL(url);
     }
 
-    const upload = async (formData: FormData) => {
-        await service.uploadFile(formData);
+    const uploadFile = async (formData: FormData) => {
+        await service.postFile(formData);
     };
 
     return {
         items,
         getAll,
         downloadFile,
-        upload
+        uploadFile
     }
 }
