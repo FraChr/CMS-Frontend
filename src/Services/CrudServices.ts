@@ -6,5 +6,5 @@ export const createCrudServices = (route: string) => ({
     getFile: (id: number) => apiClient.get(`/${route}/${id}/file`, {
         responseType: "blob"
     }),
-    uploadFile: (formData: FormData) => apiClient.post(`/${route}/upload`, formData)
+    postFile: (formData: FormData) => apiClient.post(`/${route}/upload`, formData)
 })
