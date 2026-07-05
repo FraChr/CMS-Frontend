@@ -2,9 +2,10 @@
 import {createCrudServices} from "@/Services/CrudServices.ts";
 
 export function useCrud<T>(route: string) {
-    const service = createCrudServices(route);
+    const service = createCrudServices<T>(route);
 
     const items = ref<T[]>([]);
+    const types = ref<string[]>([]);
 
     const getAll = async (params: Record<string, any> = {}) => {
         try {
@@ -14,6 +15,11 @@ export function useCrud<T>(route: string) {
         } catch (error) {
             console.error(`Error fetching data ${error}`);
         }
+    }
+
+    const getTypes = async () => {
+        const response = await service.getTypes();
+        types.value = response.data;
     }
 
     const downloadFile = async (id: number) => {
@@ -49,7 +55,9 @@ export function useCrud<T>(route: string) {
 
     return {
         items,
+        types,
         getAll,
+        getTypes,
         downloadFile,
         uploadFile
     }
