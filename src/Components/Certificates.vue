@@ -47,8 +47,6 @@
   onMounted(async () => {
     await certificate.getAll();
     await certificate.getTypes();
-
-    console.log(certificate.types.value);
   });
 </script>
 
