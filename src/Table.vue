@@ -30,8 +30,7 @@ const resolvedData = computed(() => unref(props.data));
       <td v-for="(header, i) in headers"
           :key="`${header}-${i}`"
           class="table-cell"
-          :class="[i === headers.length - 1 ? 'group-hover:rounded-r-2xl' : '']"
-          @click="$emit('row-click', entity)">
+         >
         <slot :name="`column${i}`" :entity="entity">{{entity[header]}}</slot>
       </td>
       <slot name="extraColumns" :entity="entity"></slot>
@@ -61,7 +60,6 @@ const resolvedData = computed(() => unref(props.data));
   }
 
   .table-body > tr:nth-child(odd) {
-   /* background-color: var(--color-extra)*/
     background-color: #f6f6f6;
   }
 
@@ -72,16 +70,6 @@ const resolvedData = computed(() => unref(props.data));
   .table-cell {
     padding: 1rem 1.5rem;
     cursor: pointer;
-  }
-
-  .table-row:hover .table-cell:first-child {
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 1rem;
-  }
-
-  .table-row:hover .table-cell-last {
-    border-top-right-radius: 1rem;
-    border-bottom-right-radius: 1rem;
   }
 
 </style>
